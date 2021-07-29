@@ -23,11 +23,4 @@ jobs:
     - name: Test
       run: |
         make test
-    - name: Coveralls report
-      env:
-        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-        GITHUB_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-      run: |
-        python -m pip install -U coveralls
-        coveralls -v --service=github-actions
 
