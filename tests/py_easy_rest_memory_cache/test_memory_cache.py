@@ -3,14 +3,14 @@ import pytest
 from aiounittest import AsyncTestCase
 from datetime import datetime, timedelta
 
-from py_easy_rest_memory_cache.memory_cache import MemoryCache
+from py_easy_rest_memory_cache import PYRMemoryCache
 
 
-class TestMemoryCache(AsyncTestCase):
+class TestPYRMemoryCache(AsyncTestCase):
 
     @pytest.mark.asyncio
     async def test_should_get_None_when_there_is_no_result_with_key(self):
-        cache = MemoryCache()
+        cache = PYRMemoryCache()
 
         result = await cache.get("key")
 
@@ -18,7 +18,7 @@ class TestMemoryCache(AsyncTestCase):
 
     @pytest.mark.asyncio
     async def test_should_get_the_correct_value_when_there_is_result_with_key(self):
-        cache = MemoryCache(initial_data={
+        cache = PYRMemoryCache(initial_data={
             "key-1": "value-1",
             "key-2": "value-2",
         })
@@ -29,7 +29,7 @@ class TestMemoryCache(AsyncTestCase):
 
     @pytest.mark.asyncio
     async def test_should_get_the_correct_value_when_there_is_result_with_key_and_it_is_not_expired(self):
-        cache = MemoryCache(
+        cache = PYRMemoryCache(
             initial_data={
                 "key-1": "value-1",
                 "key-2": "value-2",
@@ -45,7 +45,7 @@ class TestMemoryCache(AsyncTestCase):
 
     @pytest.mark.asyncio
     async def test_should_get_None_when_there_is_result_with_key_and_it_is_expired(self):
-        cache = MemoryCache(
+        cache = PYRMemoryCache(
             initial_data={
                 "key-1": "value-1",
                 "key-2": "value-2",
@@ -61,7 +61,7 @@ class TestMemoryCache(AsyncTestCase):
 
     @pytest.mark.asyncio
     async def test_should_delete_data_correctly(self):
-        cache = MemoryCache(
+        cache = PYRMemoryCache(
             initial_data={
                 "key-1": "value-1",
                 "key-2": "value-2",
@@ -76,7 +76,7 @@ class TestMemoryCache(AsyncTestCase):
 
     @pytest.mark.asyncio
     async def test_should_delete_do_nothing_when_there_is_no_result_with_key(self):
-        cache = MemoryCache(
+        cache = PYRMemoryCache(
             initial_data={
                 "key-1": "value-1",
                 "key-2": "value-2",
@@ -91,7 +91,7 @@ class TestMemoryCache(AsyncTestCase):
 
     @pytest.mark.asyncio
     async def test_should_set_correctly(self):
-        cache = MemoryCache()
+        cache = PYRMemoryCache()
 
         await cache.set("key", "value")
 
@@ -101,7 +101,7 @@ class TestMemoryCache(AsyncTestCase):
 
     @pytest.mark.asyncio
     async def test_should_set_with_ttl_correctly(self):
-        cache = MemoryCache()
+        cache = PYRMemoryCache()
 
         await cache.set("key", "value", 10)
 
