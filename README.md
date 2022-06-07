@@ -22,7 +22,7 @@ Cache lib to use with [py-easy-rest](https://github.com/JeanPinzon/py-easy-rest)
 
 from py_easy_rest import PYRSanicAppBuilder
 from py_easy_rest.service import PYRService
-from py-easy-rest-memory-cache import PYRMemoryCache
+from py_easy_rest_memory_cache import PYRMemoryCache
 
 
 config = {
